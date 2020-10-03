@@ -1,0 +1,8 @@
+- name: Setup standard Linux bridges for routing.
+  community.general.nmcli:
+    type: bridge
+    conn_name: '{{ item.name }}'
+    ip4: '{{ item.ipaddr }}'
+    state: present
+  with_items:
+    - '{{ role_mod_netbridge_stdliux_routing_bridges }}'
